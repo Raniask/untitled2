@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lava</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<h1 align="center" >Lava</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="border-color: #00B7FF;color: mediumblue">
+    <a class="navbar-brand" href="http://localhost:63342/second/day33.html?" style="color: mediumvioletred">Lava
+        |</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://geology.com/" style="color: mediumvioletred">Home | <span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://geology.com/" style="color: mediumvioletred">Information |</a>
+            </li>
+            <li class="nav-item dropdown" style="color: mediumvioletred">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" style="color: mediumvioletred">
+                    Sections |
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"
+                       href="https://geology.com/"
+                       style="color: mediumvioletred"> rocks </a>
+                    <a class="dropdown-item" href="https://geology.com/" style="color: mediumvioletred">geophysics</a>
+                    <a class="dropdown-item"
+                       herf="https://geology.com/"
+                       style="color: mediumvioletred"> minerals</a>
+
+                    <a class="dropdown-item"
+                       href="https://geology.com/"
+                       style="color: mediumvioletred">texture</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </ul>
+        </form>
+    </div>
+</nav>
+<div class="container" id="root">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4 col-sm-6 col-12 " v-for='x in rr'mr-2>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" :src="x.img1" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{x.name}}</h5>
+                    <p class="card-text">{{x.desc}}</p>
+                    <a :href="x.link" class="btn btn-primary">Visit the site</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#root",
+        data: {
+            rr: []
+        }
+
+/// get is the method
+    })
+    axios.get("/api").then(function (response) {
+        app.rr = response.data;
+        console.log(response.data)
+    });
+
+</script>
+</html>
